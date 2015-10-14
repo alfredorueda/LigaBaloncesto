@@ -21,6 +21,10 @@ public class Jugador {
     private Integer rebotesTotales;
     private String posicionCampo;
 
+    /*Un jugador sólo puede participar en un equipo*/
+    @ManyToOne
+    private Equipo equipo;
+
     public Long getId() {
         return id;
     }
@@ -75,6 +79,18 @@ public class Jugador {
 
     public void setPosicionCampo(String pocicionCampo) {
         this.posicionCampo = pocicionCampo;
+    }
+
+    public String getPosicionCampo() {
+        return posicionCampo;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 
     @Override
