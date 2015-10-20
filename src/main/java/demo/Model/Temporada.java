@@ -9,8 +9,21 @@ public class Temporada {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 
-
+    private Long id;
     private Date año;
+
+    /*Una temporada esta formada por varias ligas*/
+    @ManyToOne
+    private Liga liga;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Date getAño() {
         return año;
@@ -23,7 +36,9 @@ public class Temporada {
     @Override
     public String toString() {
         return "Temporada{" +
-                "año=" + año +
+                "id=" + id +
+                ", año=" + año +
+                ", liga=" + liga +
                 '}';
     }
 }

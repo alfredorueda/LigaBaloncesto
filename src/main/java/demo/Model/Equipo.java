@@ -12,15 +12,17 @@ Inicialmente, la entidad Equipo tendrá los siguientes atributos:
 identificador, nombre, localidad y fecha de creación.*/
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
-
+private Long id;
 
     private String nombre;
     private String localidad;
     private Date fechaCreacion;
+    private Date fechaNaciemiento;
 
     /*Un equipo está formado por varios jugadores*/
     @OneToMany(mappedBy = "equipo")
     private Set<Jugador> jugadors = new HashSet<>();
+
 
     public String getNombre() {
         return nombre;
@@ -62,4 +64,5 @@ identificador, nombre, localidad y fecha de creación.*/
                 ", fechaCreacion=" + fechaCreacion +
                 '}';
     }
+
 }

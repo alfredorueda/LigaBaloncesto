@@ -11,7 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class EquipoService {
     @Autowired
     private EquipoRepository equipoRepository;
-    public void testEquipo(){}
+    public void testEquipo(){
+
+
+
+    }
+
+
 
 
 }

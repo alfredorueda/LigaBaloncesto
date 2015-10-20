@@ -89,7 +89,7 @@ public class Jugador {
         return equipo;
     }
 
-    public void setEquipo(Equipo equipo) {
+    public void setEquipo (Equipo equipo) {
         this.equipo = equipo;
     }
 

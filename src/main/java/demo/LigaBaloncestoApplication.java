@@ -1,8 +1,5 @@
 package demo;
 
-import demo.Model.Equipo;
-import demo.Model.Jugador;
-import demo.Repository.LigaRepository;
 import demo.Service.EquipoService;
 import demo.Service.JugadorService;
 import demo.Service.LigaService;
@@ -27,7 +24,7 @@ public class LigaBaloncestoApplication {
 
         LigaService ligaService=context.getBean(LigaService.class);
 
-        ligaService.testLiga();
+        ligaService.crearEquipos();
 
 
     }
