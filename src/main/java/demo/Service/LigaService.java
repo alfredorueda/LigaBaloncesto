@@ -29,6 +29,8 @@ public class LigaService {
     private TemporadaRepository temporadaRepository;
 
 
+
+    //creamos una liga
     public void crearLigaAcb(){
         Liga acb=new Liga();
         acb.setNombre("ACB");
@@ -36,22 +38,42 @@ public class LigaService {
 
     }
 
-    public void temporada{
+    //crear dos temporadas
+    public void crearTemporadas(){
+
+        crearEquipos();
+        crearLigaAcb();
         crearTemporadaT1();
         crearTemporadaT2();
 
     }
 
+    //para cada temporada vincularla con un año
     public void crearTemporadaT1(){
         Temporada t1=new Temporada();
+        t1.setNombre("Temporada ACB 2015");
         t1.setAño(2015);
+        t1.setLiga(ligaRepository.findOne(1L));
+        t1.getEquipos().add(equipoRepository.findByNombre("Unicaja"));
+        t1.getEquipos().add(equipoRepository.findByNombre("Valencia"));
+        t1.getEquipos().add(equipoRepository.findByNombre("Leon"));
+        temporadaRepository.save(t1);
     }
 
      public void crearTemporadaT2(){
+
          Temporada t2=new Temporada();
+         t2.setNombre("Temporada ACB 2016");
+         t2.setLiga(ligaRepository.findOne(1L));
          t2.setAño(2016);
+
+
+         t2.getEquipos().add(equipoRepository.findByNombre("Barcelona"));
+         t2.getEquipos().add(equipoRepository.findByNombre("Herbalife"));
+         temporadaRepository.save(t2);
      }
 
+    //cremos cinco equipos
     public void crearEquipos(){
 
         crearEquipoBarca();
@@ -61,8 +83,9 @@ public class LigaService {
         crearEquipoLeon();
     }
 
+    // llenamos cada equipos con cinco jugadores
     private void crearEquipoLeon() {
-        Equipo leon=new Equipo();
+        Equipo leon= new Equipo();
         leon.setNombre("Leon");
         leon.setLocalidad("Leon");
         Calendar leones=Calendar.getInstance();
@@ -137,7 +160,8 @@ public class LigaService {
         jugadorRepository.save(samuel);
 
     }
-//
+
+
     private void crearEquipoHerbalife() {
         Equipo herbalife = new Equipo();
         herbalife.setNombre("Herbalife");
@@ -296,8 +320,8 @@ public class LigaService {
         unicaja.setLocalidad("Malaga");
         Calendar malaga=Calendar.getInstance();
         malaga.set(1954, Calendar.NOVEMBER, 18);
-        Date birthDateV=malaga.getTime();
-        unicaja.setFechaCreacion(birthDateV);
+        Date birthDateM=malaga.getTime();
+        unicaja.setFechaCreacion(birthDateM);
         equipoRepository.save(unicaja);
 
         Jugador jackson=new Jugador();

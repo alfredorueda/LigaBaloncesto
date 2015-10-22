@@ -17,12 +17,30 @@ private Long id;
     private String nombre;
     private String localidad;
     private Date fechaCreacion;
-    private Date fechaNaciemiento;
+
 
     /*Un equipo está formado por varios jugadores*/
     @OneToMany(mappedBy = "equipo")
     private Set<Jugador> jugadors = new HashSet<>();
 
+    @ManyToMany(mappedBy = "equipos")
+    private Set<Temporada> temporadas = new HashSet<>();
+
+    public Set<Temporada> getTemporadas() {
+        return temporadas;
+    }
+
+    public void setTemporadas(Set<Temporada> temporadas) {
+        this.temporadas = temporadas;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
