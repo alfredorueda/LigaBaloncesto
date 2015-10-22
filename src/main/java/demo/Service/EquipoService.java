@@ -13,9 +13,9 @@ public class EquipoService {
     private EquipoRepository equipoRepository;
     public void testEquipo(){
 
-        System.out.println(equipoRepository.findByNameContaining("Barcelona"));
 
-    }
+
+}
 
 
 

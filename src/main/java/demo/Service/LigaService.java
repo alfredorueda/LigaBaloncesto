@@ -45,7 +45,14 @@ public class LigaService {
         crearLigaAcb();
         crearTemporadaT1();
         crearTemporadaT2();
+        testConsultas();
 
+
+    }
+
+    private void testConsultas() {
+        System.out.println("Voy a mostrar los equipos que se llaman Barcelona");
+        System.out.println(equipoRepository.findByNombreContaining("Barcelona"));
     }
 
     //para cada temporada vincularla con un año
