@@ -9,11 +9,13 @@ import demo.Repository.JugadorRepository;
 import demo.Repository.LigaRepository;
 import demo.Repository.TemporadaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -51,8 +53,29 @@ public class LigaService {
     }
 
     private void testConsultas() {
+
         System.out.println("Voy a mostrar los equipos que se llaman Barcelona");
         System.out.println(equipoRepository.findByNombreContaining("Barcelona"));
+        //Devuelve todos los jugadores de un equipo, a partir del nombre completo del equipo.
+        System.out.println("Devolver los jugadores de un equipo sin query");
+        System.out.println(jugadorRepository.findByEquipoNombre("Valencia"));
+
+        System.out.println("Devolver los jugadores de un equipo con query");
+        System.out.println(jugadorRepository.findByNombreEquipo("Valencia"));
+
+        //Devuelve todos los jugadores de un equipo,
+        // que además jueguen en la misma posición, por ejemplo, alero.
+        System.out.println("Devolver los jugadores de un equipo que juguen en la misma posicion");
+        System.out.println(jugadorRepository.findJugadoresByposicionfromEquipo("Ala Pivot", "Unicaja"));
+
+        //Devuelve el jugador que más canastas ha conseguido del total de jugadores
+        System.out.println("El jugador con mas canastas");
+        System.out.println(jugadorRepository.findCanastasOrderByCanastaTotales().get(0));
+        //Devuelve los cinco jugadores que más asistencias han efectuado
+        System.out.println("Los cinco jugadores con mas asistencias");
+        System.out.println(jugadorRepository.findByAsistenciasOrderBy().subList(0,5));
+
+
     }
 
     //para cada temporada vincularla con un año
@@ -61,6 +84,7 @@ public class LigaService {
         t1.setNombre("Temporada ACB 2015");
         t1.setAño(2015);
         t1.setLiga(ligaRepository.findOne(1L));
+        //añadimos los equipos a la temporada
         t1.getEquipos().add(equipoRepository.findByNombre("Unicaja"));
         t1.getEquipos().add(equipoRepository.findByNombre("Valencia"));
         t1.getEquipos().add(equipoRepository.findByNombre("Leon"));

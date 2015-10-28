@@ -102,7 +102,8 @@ public class Jugador {
                 ", canastasTotales=" + canastasTotales +
                 ", asistenciasTotales=" + asistenciasTotales +
                 ", rebotesTotales=" + rebotesTotales +
-                ", pocicionCampo='" + posicionCampo + '\'' +
+                ", posicionCampo='" + posicionCampo + '\'' +
+                ", equipo='" +equipo.getNombre() + '\'' +
                 '}';
     }
 }
