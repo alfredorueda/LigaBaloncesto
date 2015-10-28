@@ -74,7 +74,9 @@ public class LigaService {
         //Devuelve los cinco jugadores que más asistencias han efectuado
         System.out.println("Los cinco jugadores con mas asistencias");
         System.out.println(jugadorRepository.findByAsistenciasOrderBy().subList(0,5));
-
+        //Devuelve el jugador que más canastas ha realizado de un equipo determinado como parámetro.
+        System.out.println("Jugador con mas canastas");
+        System.out.println(jugadorRepository.findCanastasOrderByCanastasTotales("Valencia").get(0));
 
     }
 

@@ -62,5 +62,10 @@ public interface JugadorRepository extends PagingAndSortingRepository<Jugador,Lo
     //Devuelve los cinco jugadores que más asistencias han efectuado
     @Query("select  j from Jugador j order by j.asistenciasTotales desc ")
     List<Jugador> findByAsistenciasOrderBy();
-}
 
+    //Devuelve el jugador que más canastas ha realizado de un equipo determinado como parámetro.
+    @Query("SELECT j FROM Jugador j where j.equipo.nombre = :nombreEquipo order by j.canastasTotales desc ")
+    List<Jugador> findCanastasOrderByCanastasTotales(@Param("nombreEquipo") String nombreEquipo);
+
+}
+/*Programar los controladores REST para las entidades jugador, equipo, temporada y liga*/
