@@ -14,7 +14,6 @@ public class Temporada {
     private Integer año;
     private String nombre;
 
-    /*Una temporada esta formada por varias ligas*/
     @ManyToOne
     private Liga liga;
 
